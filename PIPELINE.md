@@ -355,7 +355,7 @@ benchmark/
 | 2026-10-22 | Challengers approved: Qwen3-VL-8B, GLM-OCR, DECIMER, Uni-MuMER. They run on Colab T4 in float16 | Team decision; T4 has no bfloat16 [S88] |
 | 2026-10-22 | No model is called through a hosted API. The baseline is Niera's current production OCR output, supplied later | Team decision |
 | 2026-10-22 | Results dashboard: Next.js + shadcn/ui frontend, FastAPI backend, Postgres (Neon). Public, no login. Code in `benchmark/dashboard` and `benchmark/api` | Team decision; one Python codebase shares result schemas with the harness |
-| 2026-10-22 | **Pending:** dashboard hosting. Vercel needs the paid Pro plan for company use [S80] [S81]; the free option is Cloudflare Pages + Cloud Run [S83] [S84] [S85] | Hobby plan is non-commercial only |
+| 2026-10-22 | Dashboard hosting: one Vercel project on the free Hobby plan using Vercel Services (Next.js on `/`, FastAPI on `/api`, config in `vercel.json`), Neon free Postgres in Washington, D.C. next to the API. Hobby is non-commercial only [S80]; the team accepted that risk | Team decision [S94] [S95] |
 | 2026-10-22 | Phase 0 fix: create venvs with `uv venv --seed` or install with `uv pip install`; `python -m pip` fails in a plain uv venv | [S89] |
 | 2026-10-22 | Added PP-DocLayoutV3 (layout only: scored on checklist layout and reading-order stages, not on text accuracy), MinerU 2.5 Pro 1.2B and Typhoon OCR 1.5 2B (Colab T4) | User request [S90] [S91] [S92] [S93] |
 | 2026-10-22 | Prompt exception: Typhoon OCR uses its own fixed prompt, because the card says it does not work with any other prompt. Mark it as an exception next to its score | [S93] |

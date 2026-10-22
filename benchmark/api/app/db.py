@@ -31,7 +31,10 @@ class Base(DeclarativeBase):
     pass
 
 
-engine = create_engine(database_url(), pool_pre_ping=True)
+_url = database_url()
+# Neon's DATABASE_URL goes through PgBouncer; server-side prepared statements can break there.
+_connect_args = {"prepare_threshold": None} if _url.startswith("postgresql+psycopg://") else {}
+engine = create_engine(_url, pool_pre_ping=True, connect_args=_connect_args)
 SessionLocal = sessionmaker(bind=engine, autoflush=False, expire_on_commit=False)
 
 
