@@ -1,0 +1,1847 @@
+[
+ {
+  "id": "handwritten_text/0001",
+  "category": "handwritten_text",
+  "stage_ids": [
+   "F01",
+   "T04",
+   "T05"
+  ],
+  "file_format": "png",
+  "sha256": "dc071b660ca68aa67769f9c7b4219636245f5f48a184592de0ab2eebed96ba13",
+  "image_file": "handwritten_text__0001.png",
+  "width": 1100,
+  "height": 720,
+  "source": "demo: drawn answer sheet",
+  "license": "demo (made for this dashboard)",
+  "ground_truth": {
+   "text": "Q3. A body is thrown up with speed 20 m/s.\nTime to reach the top = u/g = 20/10 = 2 s\nMax height = u^2/2g = 400/20 = 20 m\nSo the body rises 20 m before falling."
+  },
+  "gt_kind": "text",
+  "lines": [
+   {
+    "text": "Q3. A body is thrown up with speed 20 m/s.",
+    "poly": [
+     [
+      122,
+      63
+     ],
+     [
+      889,
+      63
+     ],
+     [
+      889,
+      116
+     ],
+     [
+      122,
+      116
+     ]
+    ]
+   },
+   {
+    "text": "Time to reach the top = u/g = 20/10 = 2 s",
+    "poly": [
+     [
+      122,
+      154
+     ],
+     [
+      864,
+      154
+     ],
+     [
+      864,
+      204
+     ],
+     [
+      122,
+      204
+     ]
+    ]
+   },
+   {
+    "text": "Max height = u^2/2g = 400/20 = 20 m",
+    "poly": [
+     [
+      124,
+      242
+     ],
+     [
+      866,
+      242
+     ],
+     [
+      866,
+      290
+     ],
+     [
+      124,
+      290
+     ]
+    ]
+   },
+   {
+    "text": "So the body rises 20 m before falling.",
+    "poly": [
+     [
+      112,
+      339
+     ],
+     [
+      772,
+      339
+     ],
+     [
+      772,
+      392
+     ],
+     [
+      112,
+      392
+     ]
+    ]
+   }
+  ]
+ },
+ {
+  "id": "handwritten_text/0002",
+  "category": "handwritten_text",
+  "stage_ids": [
+   "F01",
+   "T04",
+   "T05"
+  ],
+  "file_format": "png",
+  "sha256": "5371b32002e94f79cdf92f475e99828c493ce1389e86183db03996f61bc2bee9",
+  "image_file": "handwritten_text__0002.png",
+  "width": 1100,
+  "height": 720,
+  "source": "demo: drawn answer sheet",
+  "license": "demo (made for this dashboard)",
+  "ground_truth": {
+   "text": "Ans: Photosynthesis needs sunlight,\nchlorophyll, carbon dioxide and water.\nOxygen is given out as a by-product.\nIt happens mostly in the leaves."
+  },
+  "gt_kind": "text",
+  "lines": [
+   {
+    "text": "Ans: Photosynthesis needs sunlight,",
+    "poly": [
+     [
+      113,
+      53
+     ],
+     [
+      769,
+      53
+     ],
+     [
+      769,
+      108
+     ],
+     [
+      113,
+      108
+     ]
+    ]
+   },
+   {
+    "text": "chlorophyll, carbon dioxide and water.",
+    "poly": [
+     [
+      122,
+      148
+     ],
+     [
+      833,
+      148
+     ],
+     [
+      833,
+      204
+     ],
+     [
+      122,
+      204
+     ]
+    ]
+   },
+   {
+    "text": "Oxygen is given out as a by-product.",
+    "poly": [
+     [
+      112,
+      239
+     ],
+     [
+      795,
+      239
+     ],
+     [
+      795,
+      293
+     ],
+     [
+      112,
+      293
+     ]
+    ]
+   },
+   {
+    "text": "It happens mostly in the leaves.",
+    "poly": [
+     [
+      109,
+      334
+     ],
+     [
+      691,
+      334
+     ],
+     [
+      691,
+      390
+     ],
+     [
+      109,
+      390
+     ]
+    ]
+   }
+  ]
+ },
+ {
+  "id": "handwritten_text/0003",
+  "category": "handwritten_text",
+  "stage_ids": [
+   "F01",
+   "T04",
+   "T05"
+  ],
+  "file_format": "png",
+  "sha256": "cbfddd056179214262fcbaee5feb4b43c14fb0ca87c08a13448f0dda1bd6d925",
+  "image_file": "handwritten_text__0003.png",
+  "width": 1100,
+  "height": 720,
+  "source": "demo: drawn answer sheet",
+  "license": "demo (made for this dashboard)",
+  "ground_truth": {
+   "text": "Ohm's law: V = IR at constant temperature.\nHere R = 12 ohm and I = 0.5 A\nso V = 12 x 0.5 = 6 V\nThe bulb glows less when R increases."
+  },
+  "gt_kind": "text",
+  "lines": [
+   {
+    "text": "Ohm's law: V = IR at constant temperature.",
+    "poly": [
+     [
+      113,
+      60
+     ],
+     [
+      923,
+      60
+     ],
+     [
+      923,
+      109
+     ],
+     [
+      113,
+      109
+     ]
+    ]
+   },
+   {
+    "text": "Here R = 12 ohm and I = 0.5 A",
+    "poly": [
+     [
+      124,
+      154
+     ],
+     [
+      687,
+      154
+     ],
+     [
+      687,
+      193
+     ],
+     [
+      124,
+      193
+     ]
+    ]
+   },
+   {
+    "text": "so V = 12 x 0.5 = 6 V",
+    "poly": [
+     [
+      109,
+      246
+     ],
+     [
+      504,
+      246
+     ],
+     [
+      504,
+      284
+     ],
+     [
+      109,
+      284
+     ]
+    ]
+   },
+   {
+    "text": "The bulb glows less when R increases.",
+    "poly": [
+     [
+      114,
+      340
+     ],
+     [
+      814,
+      340
+     ],
+     [
+      814,
+      389
+     ],
+     [
+      114,
+      389
+     ]
+    ]
+   }
+  ]
+ },
+ {
+  "id": "handwritten_text/0004",
+  "category": "handwritten_text",
+  "stage_ids": [
+   "F01",
+   "T04",
+   "T05"
+  ],
+  "file_format": "png",
+  "sha256": "761a1bade8175db5458719fd9c38f1bf49b7429f7a05462429f6e2eb23c1128c",
+  "image_file": "handwritten_text__0004.png",
+  "width": 1100,
+  "height": 720,
+  "source": "demo: drawn answer sheet",
+  "license": "demo (made for this dashboard)",
+  "ground_truth": {
+   "text": "Mendeleev arranged elements by atomic mass.\nHe left gaps for undiscovered elements\nlike gallium and germanium.\nModern table uses atomic number."
+  },
+  "gt_kind": "text",
+  "lines": [
+   {
+    "text": "Mendeleev arranged elements by atomic mass.",
+    "poly": [
+     [
+      118,
+      76
+     ],
+     [
+      905,
+      76
+     ],
+     [
+      905,
+      135
+     ],
+     [
+      118,
+      135
+     ]
+    ]
+   },
+   {
+    "text": "He left gaps for undiscovered elements",
+    "poly": [
+     [
+      114,
+      169
+     ],
+     [
+      783,
+      169
+     ],
+     [
+      783,
+      230
+     ],
+     [
+      114,
+      230
+     ]
+    ]
+   },
+   {
+    "text": "like gallium and germanium.",
+    "poly": [
+     [
+      115,
+      257
+     ],
+     [
+      565,
+      257
+     ],
+     [
+      565,
+      316
+     ],
+     [
+      115,
+      316
+     ]
+    ]
+   },
+   {
+    "text": "Modern table uses atomic number.",
+    "poly": [
+     [
+      123,
+      345
+     ],
+     [
+      703,
+      345
+     ],
+     [
+      703,
+      393
+     ],
+     [
+      123,
+      393
+     ]
+    ]
+   }
+  ]
+ },
+ {
+  "id": "handwritten_text/0005",
+  "category": "handwritten_text",
+  "stage_ids": [
+   "F01",
+   "T04",
+   "T05"
+  ],
+  "file_format": "png",
+  "sha256": "e89d13ee9f41f048cbecc40e18b63aff8afe30828f82537ef99c0900978e4639",
+  "image_file": "handwritten_text__0005.png",
+  "width": 1100,
+  "height": 720,
+  "source": "demo: drawn answer sheet",
+  "license": "demo (made for this dashboard)",
+  "ground_truth": {
+   "text": "Q7. Why is the sky blue?\nAir molecules scatter blue light more\nthan red light because blue has a\nshorter wavelength. (Rayleigh)"
+  },
+  "gt_kind": "text",
+  "lines": [
+   {
+    "text": "Q7. Why is the sky blue?",
+    "poly": [
+     [
+      116,
+      61
+     ],
+     [
+      565,
+      61
+     ],
+     [
+      565,
+      114
+     ],
+     [
+      116,
+      114
+     ]
+    ]
+   },
+   {
+    "text": "Air molecules scatter blue light more",
+    "poly": [
+     [
+      108,
+      151
+     ],
+     [
+      751,
+      151
+     ],
+     [
+      751,
+      199
+     ],
+     [
+      108,
+      199
+     ]
+    ]
+   },
+   {
+    "text": "than red light because blue has a",
+    "poly": [
+     [
+      116,
+      242
+     ],
+     [
+      691,
+      242
+     ],
+     [
+      691,
+      290
+     ],
+     [
+      116,
+      290
+     ]
+    ]
+   },
+   {
+    "text": "shorter wavelength. (Rayleigh)",
+    "poly": [
+     [
+      124,
+      335
+     ],
+     [
+      674,
+      335
+     ],
+     [
+      674,
+      388
+     ],
+     [
+      124,
+      388
+     ]
+    ]
+   }
+  ]
+ },
+ {
+  "id": "handwritten_text/0006",
+  "category": "handwritten_text",
+  "stage_ids": [
+   "F01",
+   "T04",
+   "T05"
+  ],
+  "file_format": "png",
+  "sha256": "a0e94ad7ad9f8748d7206f078ad53c33b65036c3bf0128993011f492dbbfa1e6",
+  "image_file": "handwritten_text__0006.png",
+  "width": 1100,
+  "height": 720,
+  "source": "demo: drawn answer sheet",
+  "license": "demo (made for this dashboard)",
+  "ground_truth": {
+   "text": "Mitochondria is the powerhouse of cell.\nIt makes ATP by cellular respiration.\nIt has its own DNA and ribosomes.\nNumber is high in muscle cells."
+  },
+  "gt_kind": "text",
+  "lines": [
+   {
+    "text": "Mitochondria is the powerhouse of cell.",
+    "poly": [
+     [
+      111,
+      58
+     ],
+     [
+      836,
+      58
+     ],
+     [
+      836,
+      114
+     ],
+     [
+      111,
+      114
+     ]
+    ]
+   },
+   {
+    "text": "It makes ATP by cellular respiration.",
+    "poly": [
+     [
+      111,
+      148
+     ],
+     [
+      787,
+      148
+     ],
+     [
+      787,
+      204
+     ],
+     [
+      111,
+      204
+     ]
+    ]
+   },
+   {
+    "text": "It has its own DNA and ribosomes.",
+    "poly": [
+     [
+      120,
+      237
+     ],
+     [
+      746,
+      237
+     ],
+     [
+      746,
+      286
+     ],
+     [
+      120,
+      286
+     ]
+    ]
+   },
+   {
+    "text": "Number is high in muscle cells.",
+    "poly": [
+     [
+      108,
+      328
+     ],
+     [
+      664,
+      328
+     ],
+     [
+      664,
+      382
+     ],
+     [
+      108,
+      382
+     ]
+    ]
+   }
+  ]
+ },
+ {
+  "id": "handwritten_formula/0001",
+  "category": "handwritten_formula",
+  "stage_ids": [
+   "X02"
+  ],
+  "file_format": "png",
+  "sha256": "129a5f897ca15768c664547456ebee87372b92da06113c01d29fec5a212d1ad8",
+  "image_file": "handwritten_formula__0001.png",
+  "width": 1100,
+  "height": 720,
+  "source": "demo: drawn formula",
+  "license": "demo (made for this dashboard)",
+  "ground_truth": {
+   "latex": "v^{2}=u^{2}+2as"
+  },
+  "gt_kind": "latex",
+  "lines": [
+   {
+    "text": "v² = u² + 2as",
+    "poly": [
+     [
+      160,
+      298
+     ],
+     [
+      617,
+      298
+     ],
+     [
+      617,
+      351
+     ],
+     [
+      160,
+      351
+     ]
+    ]
+   }
+  ]
+ },
+ {
+  "id": "handwritten_formula/0002",
+  "category": "handwritten_formula",
+  "stage_ids": [
+   "X02"
+  ],
+  "file_format": "png",
+  "sha256": "bcd035555a489eadf7a3dfb38821d1cbd0a9a4bfb0c9ad393221f049172264b1",
+  "image_file": "handwritten_formula__0002.png",
+  "width": 1100,
+  "height": 720,
+  "source": "demo: drawn formula",
+  "license": "demo (made for this dashboard)",
+  "ground_truth": {
+   "latex": "F=\\frac{Gm_{1}m_{2}}{r^{2}}"
+  },
+  "gt_kind": "latex",
+  "lines": [
+   {
+    "text": "F = G m₁m₂ / r²",
+    "poly": [
+     [
+      173,
+      297
+     ],
+     [
+      659,
+      297
+     ],
+     [
+      659,
+      359
+     ],
+     [
+      173,
+      359
+     ]
+    ]
+   }
+  ]
+ },
+ {
+  "id": "handwritten_formula/0003",
+  "category": "handwritten_formula",
+  "stage_ids": [
+   "X02"
+  ],
+  "file_format": "png",
+  "sha256": "8f52ddd376c3b45c2363a75a86752f71cf056c2f3eb246539c665722132d2c0b",
+  "image_file": "handwritten_formula__0003.png",
+  "width": 1100,
+  "height": 720,
+  "source": "demo: drawn formula",
+  "license": "demo (made for this dashboard)",
+  "ground_truth": {
+   "latex": "\\int_{0}^{1}x^{2}\\,dx=\\frac{1}{3}"
+  },
+  "gt_kind": "latex",
+  "lines": [
+   {
+    "text": "∫₀¹ x² dx = 1/3",
+    "poly": [
+     [
+      168,
+      280
+     ],
+     [
+      618,
+      280
+     ],
+     [
+      618,
+      381
+     ],
+     [
+      168,
+      381
+     ]
+    ]
+   }
+  ]
+ },
+ {
+  "id": "handwritten_formula/0004",
+  "category": "handwritten_formula",
+  "stage_ids": [
+   "X02"
+  ],
+  "file_format": "png",
+  "sha256": "281ab19b400f1f22bae3be953e44814016dc7cdca0cf139633ddd71f28073314",
+  "image_file": "handwritten_formula__0004.png",
+  "width": 1100,
+  "height": 720,
+  "source": "demo: drawn formula",
+  "license": "demo (made for this dashboard)",
+  "ground_truth": {
+   "latex": "\\mathrm{pH}=-\\log[\\mathrm{H}^{+}]"
+  },
+  "gt_kind": "latex",
+  "lines": [
+   {
+    "text": "pH = −log[H⁺]",
+    "poly": [
+     [
+      170,
+      297
+     ],
+     [
+      606,
+      297
+     ],
+     [
+      606,
+      371
+     ],
+     [
+      170,
+      371
+     ]
+    ]
+   }
+  ]
+ },
+ {
+  "id": "handwritten_formula/0005",
+  "category": "handwritten_formula",
+  "stage_ids": [
+   "X02"
+  ],
+  "file_format": "png",
+  "sha256": "adc882d8d4d17250150e4e58019960aeb888ebfb9140a2af48e104be763d1f83",
+  "image_file": "handwritten_formula__0005.png",
+  "width": 1100,
+  "height": 720,
+  "source": "demo: drawn formula",
+  "license": "demo (made for this dashboard)",
+  "ground_truth": {
+   "latex": "\\lambda=\\frac{h}{mv}"
+  },
+  "gt_kind": "latex",
+  "lines": [
+   {
+    "text": "λ = h / mv",
+    "poly": [
+     [
+      164,
+      300
+     ],
+     [
+      486,
+      300
+     ],
+     [
+      486,
+      361
+     ],
+     [
+      164,
+      361
+     ]
+    ]
+   }
+  ]
+ },
+ {
+  "id": "printed_text/0001",
+  "category": "printed_text",
+  "stage_ids": [
+   "T03",
+   "L03"
+  ],
+  "file_format": "png",
+  "sha256": "52f76a83f2aa1d354ffb89e9750d2b822d983d1d5210e46e8cc53e596cfc0d6f",
+  "image_file": "printed_text__0001.png",
+  "width": 1100,
+  "height": 720,
+  "source": "demo: printed page",
+  "license": "demo (made for this dashboard)",
+  "ground_truth": {
+   "text": "When a ray of light passes from air into glass,\nit bends towards the normal. This bending\nis called refraction, and the amount of\nbending depends on the refractive index."
+  },
+  "gt_kind": "text",
+  "lines": [
+   {
+    "text": "When a ray of light passes from air into glass,",
+    "poly": [
+     [
+      86,
+      125
+     ],
+     [
+      875,
+      125
+     ],
+     [
+      875,
+      171
+     ],
+     [
+      86,
+      171
+     ]
+    ]
+   },
+   {
+    "text": "it bends towards the normal. This bending",
+    "poly": [
+     [
+      86,
+      195
+     ],
+     [
+      809,
+      195
+     ],
+     [
+      809,
+      241
+     ],
+     [
+      86,
+      241
+     ]
+    ]
+   },
+   {
+    "text": "is called refraction, and the amount of",
+    "poly": [
+     [
+      86,
+      265
+     ],
+     [
+      746,
+      265
+     ],
+     [
+      746,
+      309
+     ],
+     [
+      86,
+      309
+     ]
+    ]
+   },
+   {
+    "text": "bending depends on the refractive index.",
+    "poly": [
+     [
+      85,
+      335
+     ],
+     [
+      785,
+      335
+     ],
+     [
+      785,
+      381
+     ],
+     [
+      85,
+      381
+     ]
+    ]
+   }
+  ]
+ },
+ {
+  "id": "printed_text/0002",
+  "category": "printed_text",
+  "stage_ids": [
+   "T03",
+   "L03"
+  ],
+  "file_format": "png",
+  "sha256": "5e09f42fd591ed8d61c125885f6935e2bee8cc6a4010710e2ebaa8d714c1726a",
+  "image_file": "printed_text__0002.png",
+  "width": 1100,
+  "height": 720,
+  "source": "demo: printed page",
+  "license": "demo (made for this dashboard)",
+  "ground_truth": {
+   "text": "A solution in which no more solute can be\ndissolved at a given temperature is called\na saturated solution. Heating usually lets\nmore of the solid dissolve."
+  },
+  "gt_kind": "text",
+  "lines": [
+   {
+    "text": "A solution in which no more solute can be",
+    "poly": [
+     [
+      86,
+      125
+     ],
+     [
+      813,
+      125
+     ],
+     [
+      813,
+      163
+     ],
+     [
+      86,
+      163
+     ]
+    ]
+   },
+   {
+    "text": "dissolved at a given temperature is called",
+    "poly": [
+     [
+      86,
+      195
+     ],
+     [
+      797,
+      195
+     ],
+     [
+      797,
+      241
+     ],
+     [
+      86,
+      241
+     ]
+    ]
+   },
+   {
+    "text": "a saturated solution. Heating usually lets",
+    "poly": [
+     [
+      86,
+      265
+     ],
+     [
+      783,
+      265
+     ],
+     [
+      783,
+      311
+     ],
+     [
+      86,
+      311
+     ]
+    ]
+   },
+   {
+    "text": "more of the solid dissolve.",
+    "poly": [
+     [
+      86,
+      335
+     ],
+     [
+      543,
+      335
+     ],
+     [
+      543,
+      373
+     ],
+     [
+      86,
+      373
+     ]
+    ]
+   }
+  ]
+ },
+ {
+  "id": "printed_text/0003",
+  "category": "printed_text",
+  "stage_ids": [
+   "T03",
+   "L03"
+  ],
+  "file_format": "png",
+  "sha256": "936854073e1dfa866b01c2580c546e3f3446a4cc73bc066be6e126759a358d59",
+  "image_file": "printed_text__0003.png",
+  "width": 1100,
+  "height": 720,
+  "source": "demo: printed page",
+  "license": "demo (made for this dashboard)",
+  "ground_truth": {
+   "text": "The force of attraction between the Earth\nand a body is called its weight. Weight\nchanges from place to place, but the mass\nof the body stays the same."
+  },
+  "gt_kind": "text",
+  "lines": [
+   {
+    "text": "The force of attraction between the Earth",
+    "poly": [
+     [
+      86,
+      125
+     ],
+     [
+      794,
+      125
+     ],
+     [
+      794,
+      163
+     ],
+     [
+      86,
+      163
+     ]
+    ]
+   },
+   {
+    "text": "and a body is called its weight. Weight",
+    "poly": [
+     [
+      86,
+      195
+     ],
+     [
+      756,
+      195
+     ],
+     [
+      756,
+      241
+     ],
+     [
+      86,
+      241
+     ]
+    ]
+   },
+   {
+    "text": "changes from place to place, but the mass",
+    "poly": [
+     [
+      86,
+      265
+     ],
+     [
+      803,
+      265
+     ],
+     [
+      803,
+      311
+     ],
+     [
+      86,
+      311
+     ]
+    ]
+   },
+   {
+    "text": "of the body stays the same.",
+    "poly": [
+     [
+      86,
+      335
+     ],
+     [
+      554,
+      335
+     ],
+     [
+      554,
+      381
+     ],
+     [
+      86,
+      381
+     ]
+    ]
+   }
+  ]
+ },
+ {
+  "id": "printed_formula/0001",
+  "category": "printed_formula",
+  "stage_ids": [
+   "X01"
+  ],
+  "file_format": "png",
+  "sha256": "d342a0d25f8d701f10e569d8ac0b73311219ef58b44d3ce5b2af81015bae05cc",
+  "image_file": "printed_formula__0001.png",
+  "width": 1100,
+  "height": 720,
+  "source": "demo: printed formula",
+  "license": "demo (made for this dashboard)",
+  "ground_truth": {
+   "latex": "E=mc^{2}"
+  },
+  "gt_kind": "latex",
+  "lines": [
+   {
+    "text": "E = mc²",
+    "poly": [
+     [
+      326,
+      320
+     ],
+     [
+      576,
+      320
+     ],
+     [
+      576,
+      380
+     ],
+     [
+      326,
+      380
+     ]
+    ]
+   }
+  ]
+ },
+ {
+  "id": "printed_formula/0002",
+  "category": "printed_formula",
+  "stage_ids": [
+   "X01"
+  ],
+  "file_format": "png",
+  "sha256": "0cd1489d3a1173baf5639589a08f68ca04fda9dd63f7a2e4ecc2ee781b5cce45",
+  "image_file": "printed_formula__0002.png",
+  "width": 1100,
+  "height": 720,
+  "source": "demo: printed formula",
+  "license": "demo (made for this dashboard)",
+  "ground_truth": {
+   "latex": "P=\\frac{V^{2}}{R}"
+  },
+  "gt_kind": "latex",
+  "lines": [
+   {
+    "text": "P = V² / R",
+    "poly": [
+     [
+      326,
+      320
+     ],
+     [
+      638,
+      320
+     ],
+     [
+      638,
+      380
+     ],
+     [
+      326,
+      380
+     ]
+    ]
+   }
+  ]
+ },
+ {
+  "id": "diagram_labels/0001",
+  "category": "diagram_labels",
+  "stage_ids": [
+   "X09",
+   "X11"
+  ],
+  "file_format": "png",
+  "sha256": "d126e2266ce539f9afaebc73287b26b29013baa71a6e4cc0c20540a787a36fcf",
+  "image_file": "diagram_labels__0001.png",
+  "width": 1100,
+  "height": 720,
+  "source": "demo: drawn ray diagram",
+  "license": "demo (made for this dashboard)",
+  "ground_truth": {
+   "text": "Object\nImage\nF\nF\n2F\nConvex lens"
+  },
+  "gt_kind": "text",
+  "lines": [
+   {
+    "text": "Object",
+    "poly": [
+     [
+      211,
+      236
+     ],
+     [
+      307,
+      236
+     ],
+     [
+      307,
+      285
+     ],
+     [
+      211,
+      285
+     ]
+    ]
+   },
+   {
+    "text": "Image",
+    "poly": [
+     [
+      786,
+      506
+     ],
+     [
+      867,
+      506
+     ],
+     [
+      867,
+      553
+     ],
+     [
+      786,
+      553
+     ]
+    ]
+   },
+   {
+    "text": "F",
+    "poly": [
+     [
+      406,
+      401
+     ],
+     [
+      432,
+      401
+     ],
+     [
+      432,
+      439
+     ],
+     [
+      406,
+      439
+     ]
+    ]
+   },
+   {
+    "text": "F",
+    "poly": [
+     [
+      676,
+      401
+     ],
+     [
+      702,
+      401
+     ],
+     [
+      702,
+      439
+     ],
+     [
+      676,
+      439
+     ]
+    ]
+   },
+   {
+    "text": "2F",
+    "poly": [
+     [
+      286,
+      401
+     ],
+     [
+      334,
+      401
+     ],
+     [
+      334,
+      439
+     ],
+     [
+      286,
+      439
+     ]
+    ]
+   },
+   {
+    "text": "Convex lens",
+    "poly": [
+     [
+      576,
+      151
+     ],
+     [
+      741,
+      151
+     ],
+     [
+      741,
+      191
+     ],
+     [
+      576,
+      191
+     ]
+    ]
+   }
+  ]
+ },
+ {
+  "id": "diagram_labels/0002",
+  "category": "diagram_labels",
+  "stage_ids": [
+   "X09",
+   "X11",
+   "X12"
+  ],
+  "file_format": "png",
+  "sha256": "6c2d20f1a0a19b2d3b51ffc65a7ea91c56f3bee1de3dcca1ddabc7446f41bc5b",
+  "image_file": "diagram_labels__0002.png",
+  "width": 1100,
+  "height": 720,
+  "source": "demo: drawn circuit",
+  "license": "demo (made for this dashboard)",
+  "ground_truth": {
+   "text": "R = 4 ohm\n6 V\nA\nKey K"
+  },
+  "gt_kind": "text",
+  "lines": [
+   {
+    "text": "R = 4 ohm",
+    "poly": [
+     [
+      446,
+      114
+     ],
+     [
+      620,
+      114
+     ],
+     [
+      620,
+      145
+     ],
+     [
+      446,
+      145
+     ]
+    ]
+   },
+   {
+    "text": "6 V",
+    "poly": [
+     [
+      56,
+      308
+     ],
+     [
+      117,
+      308
+     ],
+     [
+      117,
+      334
+     ],
+     [
+      56,
+      334
+     ]
+    ]
+   },
+   {
+    "text": "A",
+    "poly": [
+     [
+      881,
+      352
+     ],
+     [
+      917,
+      352
+     ],
+     [
+      917,
+      381
+     ],
+     [
+      881,
+      381
+     ]
+    ]
+   },
+   {
+    "text": "Key K",
+    "poly": [
+     [
+      496,
+      582
+     ],
+     [
+      601,
+      582
+     ],
+     [
+      601,
+      622
+     ],
+     [
+      496,
+      622
+     ]
+    ]
+   }
+  ]
+ },
+ {
+  "id": "diagram_labels/0003",
+  "category": "diagram_labels",
+  "stage_ids": [
+   "X09",
+   "X11"
+  ],
+  "file_format": "png",
+  "sha256": "e44e07292b6327ab4b1a127ad8ac4b5a0a2b572a993a2a1d9e2e6e96b3429033",
+  "image_file": "diagram_labels__0003.png",
+  "width": 1100,
+  "height": 720,
+  "source": "demo: drawn cell diagram",
+  "license": "demo (made for this dashboard)",
+  "ground_truth": {
+   "text": "Nucleus\nMitochondria\nCell membrane"
+  },
+  "gt_kind": "text",
+  "lines": [
+   {
+    "text": "Nucleus",
+    "poly": [
+     [
+      866,
+      286
+     ],
+     [
+      992,
+      286
+     ],
+     [
+      992,
+      320
+     ],
+     [
+      866,
+      320
+     ]
+    ]
+   },
+   {
+    "text": "Mitochondria",
+    "poly": [
+     [
+      46,
+      175
+     ],
+     [
+      250,
+      175
+     ],
+     [
+      250,
+      210
+     ],
+     [
+      46,
+      210
+     ]
+    ]
+   },
+   {
+    "text": "Cell membrane",
+    "poly": [
+     [
+      876,
+      529
+     ],
+     [
+      1084,
+      529
+     ],
+     [
+      1084,
+      561
+     ],
+     [
+      876,
+      561
+     ]
+    ]
+   }
+  ]
+ },
+ {
+  "id": "chemistry/0001",
+  "category": "chemistry",
+  "stage_ids": [
+   "X05"
+  ],
+  "file_format": "png",
+  "sha256": "3276d615ea512c1d5b53ad05ade09284ae17348ac1866628642023f8e8ebbf92",
+  "image_file": "chemistry__0001.png",
+  "width": 1100,
+  "height": 720,
+  "source": "demo: hand-drawn phenol",
+  "license": "demo (made for this dashboard)",
+  "ground_truth": {
+   "smiles": "Oc1ccccc1"
+  },
+  "gt_kind": "smiles",
+  "lines": [
+   {
+    "text": "OH",
+    "poly": [
+     [
+      466.0,
+      87.0
+     ],
+     [
+      541.0,
+      87.0
+     ],
+     [
+      541.0,
+      137.0
+     ],
+     [
+      466.0,
+      137.0
+     ]
+    ]
+   }
+  ]
+ },
+ {
+  "id": "chemistry/0002",
+  "category": "chemistry",
+  "stage_ids": [
+   "X05"
+  ],
+  "file_format": "png",
+  "sha256": "e68855e20a606af995de1f88ec6250c6861e5bc44147d807bd945162b65d0ced",
+  "image_file": "chemistry__0002.png",
+  "width": 1100,
+  "height": 720,
+  "source": "demo: hand-drawn propan-1-ol",
+  "license": "demo (made for this dashboard)",
+  "ground_truth": {
+   "smiles": "CCCO"
+  },
+  "gt_kind": "smiles",
+  "lines": [
+   {
+    "text": "OH",
+    "poly": [
+     [
+      656,
+      301
+     ],
+     [
+      738,
+      301
+     ],
+     [
+      738,
+      338
+     ],
+     [
+      656,
+      338
+     ]
+    ]
+   }
+  ]
+ },
+ {
+  "id": "tables/0001",
+  "category": "tables",
+  "stage_ids": [
+   "X06"
+  ],
+  "file_format": "png",
+  "sha256": "481009b585fc0c2b165dd44a312cf3c69ac69cb7e1f7aeeb608f723323690c15",
+  "image_file": "tables__0001.png",
+  "width": 1100,
+  "height": 720,
+  "source": "demo: drawn table",
+  "license": "demo (made for this dashboard)",
+  "ground_truth": {
+   "text": "Metal | Reacts with water?\nSodium | Yes, fast\nIron | Slowly, with steam\nGold | No"
+  },
+  "gt_kind": "text",
+  "lines": [
+   {
+    "text": "Metal",
+    "poly": [
+     [
+      140,
+      156
+     ],
+     [
+      234,
+      156
+     ],
+     [
+      234,
+      195
+     ],
+     [
+      140,
+      195
+     ]
+    ]
+   },
+   {
+    "text": "Reacts with water?",
+    "poly": [
+     [
+      440,
+      156
+     ],
+     [
+      724,
+      156
+     ],
+     [
+      724,
+      196
+     ],
+     [
+      440,
+      196
+     ]
+    ]
+   },
+   {
+    "text": "Sodium",
+    "poly": [
+     [
+      140,
+      256
+     ],
+     [
+      251,
+      256
+     ],
+     [
+      251,
+      295
+     ],
+     [
+      140,
+      295
+     ]
+    ]
+   },
+   {
+    "text": "Yes, fast",
+    "poly": [
+     [
+      440,
+      256
+     ],
+     [
+      576,
+      256
+     ],
+     [
+      576,
+      298
+     ],
+     [
+      440,
+      298
+     ]
+    ]
+   },
+   {
+    "text": "Iron",
+    "poly": [
+     [
+      140,
+      357
+     ],
+     [
+      203,
+      357
+     ],
+     [
+      203,
+      395
+     ],
+     [
+      140,
+      395
+     ]
+    ]
+   },
+   {
+    "text": "Slowly, with steam",
+    "poly": [
+     [
+      440,
+      356
+     ],
+     [
+      718,
+      356
+     ],
+     [
+      718,
+      400
+     ],
+     [
+      440,
+      400
+     ]
+    ]
+   },
+   {
+    "text": "Gold",
+    "poly": [
+     [
+      140,
+      457
+     ],
+     [
+      210,
+      457
+     ],
+     [
+      210,
+      495
+     ],
+     [
+      140,
+      495
+     ]
+    ]
+   },
+   {
+    "text": "No",
+    "poly": [
+     [
+      440,
+      456
+     ],
+     [
+      485,
+      456
+     ],
+     [
+      485,
+      495
+     ],
+     [
+      440,
+      495
+     ]
+    ]
+   }
+  ]
+ }
+]

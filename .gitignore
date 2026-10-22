@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+envs/
+.pytest_cache/
+
+# Node / Next.js
+node_modules/
+.next/
+out/
+*.tsbuildinfo
+next-env.d.ts
+
+# Benchmark artefacts (large; backed up outside git)
+benchmark/results/
+benchmark/data/eval/
+model_cache/
+
+# Local databases and secrets
+*.db
+*.sqlite
+.env
+.env.*
+!.env.example
+
+# Deploy tooling
+.vercel/
+
+# OS
+.DS_Store

@@ -1,0 +1,734 @@
+{
+ "groups": {
+  "F": "Input handling",
+  "P": "Image pre-processing",
+  "L": "Layout and structure",
+  "T": "Text",
+  "X": "Special content (Niera core)",
+  "O": "Output and post-processing",
+  "R": "Robustness and hallucination",
+  "D": "Deployment"
+ },
+ "stages": [
+  {
+   "id": "F01",
+   "group": "F",
+   "name": "Phone photo JPG/PNG/HEIC read directly",
+   "priority": "H",
+   "collect": "20 phone photos, including HEIC",
+   "source": "P/OCR.html (image inputs)",
+   "evidence": "V",
+   "position": 0
+  },
+  {
+   "id": "F02",
+   "group": "F",
+   "name": "Multi-page PDF, all pages in order",
+   "priority": "H",
+   "collect": "10 PDFs, 3–20 pages",
+   "source": "P/PP-StructureV3.html: \"For PDF files, each page will be processed individually\"",
+   "evidence": "V",
+   "position": 1
+  },
+  {
+   "id": "F03",
+   "group": "F",
+   "name": "Digital PDF: uses the native text layer vs OCRs every page",
+   "priority": "M",
+   "collect": "5 digital PDFs",
+   "source": "MinerU CLI \"Parsing method: auto (default), txt, ocr\"; MK \"Force OCR\"",
+   "evidence": "V / S",
+   "position": 2
+  },
+  {
+   "id": "F04",
+   "group": "F",
+   "name": "Office files (DOCX/PPTX)",
+   "priority": "L",
+   "collect": "5 files",
+   "source": "PaddleOCR doc2md [S23]; AZR",
+   "evidence": "S",
+   "position": 3
+  },
+  {
+   "id": "F05",
+   "group": "F",
+   "name": "Large images: tiling / dynamic resolution",
+   "priority": "M",
+   "collect": "5 images over 4000 px",
+   "source": "MU25 (\"upper bound of 2048×28×28 pixels\"); QW (\"min_pixels and max_pixels\")",
+   "evidence": "S",
+   "position": 4
+  },
+  {
+   "id": "F06",
+   "group": "F",
+   "name": "Batch / folder input",
+   "priority": "L",
+   "collect": "—",
+   "source": "P/OCR.html: \"Local directory, which must contain images\"",
+   "evidence": "V",
+   "position": 5
+  },
+  {
+   "id": "P01",
+   "group": "P",
+   "name": "Image quality score (blur, glare, dark, cut-off)",
+   "priority": "M",
+   "collect": "10 bad-quality photos",
+   "source": "GDA: \"Image-quality score … in eight dimensions\"",
+   "evidence": "S",
+   "position": 6
+  },
+  {
+   "id": "P02",
+   "group": "P",
+   "name": "Page orientation 0/90/180/270",
+   "priority": "H",
+   "collect": "20 photos, 5 per angle",
+   "source": "P/doc_preprocessor.html: \"four possible orientations\"",
+   "evidence": "V",
+   "position": 7
+  },
+  {
+   "id": "P03",
+   "group": "P",
+   "name": "Deskew (small tilt)",
+   "priority": "H",
+   "collect": "10 tilted 5–20°",
+   "source": "TQ; GDA \"deskew documents\"",
+   "evidence": "V / S",
+   "position": 8
+  },
+  {
+   "id": "P04",
+   "group": "P",
+   "name": "Dewarping (curved book page)",
+   "priority": "H",
+   "collect": "10 curved pages",
+   "source": "M/text_image_unwarping.html (UVDoc)",
+   "evidence": "V",
+   "position": 9
+  },
+  {
+   "id": "P05",
+   "group": "P",
+   "name": "Perspective correction / page crop",
+   "priority": "H",
+   "collect": "10 photos taken at an angle",
+   "source": "AB \"Corrects trapezoid distortions\"",
+   "evidence": "S",
+   "position": 10
+  },
+  {
+   "id": "P06",
+   "group": "P",
+   "name": "Shadow / uneven lighting removal",
+   "priority": "H",
+   "collect": "10 shadowed photos",
+   "source": "BEDSR-Net (CVPR 2020); arXiv 2110.12942",
+   "evidence": "S",
+   "position": 11
+  },
+  {
+   "id": "P07",
+   "group": "P",
+   "name": "Denoise / despeckle",
+   "priority": "M",
+   "collect": "5 noisy scans",
+   "source": "ABE; TQ",
+   "evidence": "S / V",
+   "position": 12
+  },
+  {
+   "id": "P08",
+   "group": "P",
+   "name": "Deblur",
+   "priority": "M",
+   "collect": "5 motion-blurred photos",
+   "source": "ABBYY RemoveMotionBlur",
+   "evidence": "S",
+   "position": 13
+  },
+  {
+   "id": "P09",
+   "group": "P",
+   "name": "Low-resolution text / super-resolution",
+   "priority": "M",
+   "collect": "5 low-resolution images",
+   "source": "TextZoom, arXiv 2005.03341",
+   "evidence": "S",
+   "position": 14
+  },
+  {
+   "id": "P10",
+   "group": "P",
+   "name": "Border / background removal",
+   "priority": "L",
+   "collect": "5 scans with dark borders",
+   "source": "TQ",
+   "evidence": "V",
+   "position": 15
+  },
+  {
+   "id": "P11",
+   "group": "P",
+   "name": "Pen-mark / stamp removal before OCR",
+   "priority": "M",
+   "collect": "5 pages with teacher red-pen marks",
+   "source": "AB \"Removes any color stamps and marks made in pen\"",
+   "evidence": "S",
+   "position": 16
+  },
+  {
+   "id": "P12",
+   "group": "P",
+   "name": "Split two-page spread",
+   "priority": "L",
+   "collect": "3 book spreads",
+   "source": "AB",
+   "evidence": "S",
+   "position": 17
+  },
+  {
+   "id": "P13",
+   "group": "P",
+   "name": "Contrast enhancement",
+   "priority": "L",
+   "collect": "—",
+   "source": "none found",
+   "evidence": "U",
+   "position": 18
+  },
+  {
+   "id": "L01",
+   "group": "L",
+   "name": "Layout detection (text/title/table/formula/figure/chart…)",
+   "priority": "H",
+   "collect": "20 module pages + 20 answer sheets",
+   "source": "M/layout_detection.html (\"20 common categories\"); DocLayNet",
+   "evidence": "V",
+   "position": 19
+  },
+  {
+   "id": "L02",
+   "group": "L",
+   "name": "Figure sub-type (image / chart / chemical structure)",
+   "priority": "H",
+   "collect": "10 pages with mixed figures",
+   "source": "MU25: \"image, chart, and chemical_structure\"",
+   "evidence": "S",
+   "position": 20
+  },
+  {
+   "id": "L03",
+   "group": "L",
+   "name": "Reading order, multi-column",
+   "priority": "H",
+   "collect": "10 two-column module pages",
+   "source": "P/PP-StructureV3.html: \"multi-column reading order recovery\"",
+   "evidence": "V",
+   "position": 21
+  },
+  {
+   "id": "L04",
+   "group": "L",
+   "name": "Header / footer / page-number filtering",
+   "priority": "M",
+   "collect": "same as L03",
+   "source": "P/PP-StructureV3.html (`markdown_ignore_labels`)",
+   "evidence": "V",
+   "position": 22
+  },
+  {
+   "id": "L05",
+   "group": "L",
+   "name": "Footnotes kept as content",
+   "priority": "L",
+   "collect": "3 pages",
+   "source": "olmOCR prompt: \"keep references and footnotes\"",
+   "evidence": "S",
+   "position": 23
+  },
+  {
+   "id": "L06",
+   "group": "L",
+   "name": "Caption linked to its figure/table",
+   "priority": "M",
+   "collect": "5 pages",
+   "source": "MU (implied only)",
+   "evidence": "S / weak",
+   "position": 24
+  },
+  {
+   "id": "L07",
+   "group": "L",
+   "name": "Heading hierarchy (title levels)",
+   "priority": "M",
+   "collect": "5 chapter PDFs",
+   "source": "MU",
+   "evidence": "S",
+   "position": 25
+  },
+  {
+   "id": "L08",
+   "group": "L",
+   "name": "List detection",
+   "priority": "L",
+   "collect": "3 pages",
+   "source": "Docling labels `LIST_ITEM`",
+   "evidence": "S",
+   "position": 26
+  },
+  {
+   "id": "L09",
+   "group": "L",
+   "name": "Cross-page table merge",
+   "priority": "L",
+   "collect": "3 PDFs",
+   "source": "P/PaddleOCR-VL.html (`restructure_pages`) [S7]",
+   "evidence": "V",
+   "position": 27
+  },
+  {
+   "id": "L10",
+   "group": "L",
+   "name": "Rotated table",
+   "priority": "L",
+   "collect": "3 pages",
+   "source": "AZL; MU \"270-degree rotated table parsing\"",
+   "evidence": "S",
+   "position": 28
+  },
+  {
+   "id": "L11",
+   "group": "L",
+   "name": "Question/answer-region segmentation on answer sheets",
+   "priority": "H",
+   "collect": "20 answer sheets",
+   "source": "none found for this exact task",
+   "evidence": "U",
+   "position": 29
+  },
+  {
+   "id": "T01",
+   "group": "T",
+   "name": "Text detection: line / word polygons",
+   "priority": "H",
+   "collect": "covered by T03–T05 inputs",
+   "source": "P/OCR.html (`dt_polys`) [S10]",
+   "evidence": "V",
+   "position": 30
+  },
+  {
+   "id": "T02",
+   "group": "T",
+   "name": "Upside-down / vertical line handling",
+   "priority": "M",
+   "collect": "5 images",
+   "source": "M/textline_orientation_classification.html (\"0 degrees and 180 degrees\")",
+   "evidence": "V",
+   "position": 31
+  },
+  {
+   "id": "T03",
+   "group": "T",
+   "name": "Printed English recognition",
+   "priority": "H",
+   "collect": "20 module pages",
+   "source": "P/OCR.html",
+   "evidence": "V",
+   "position": 32
+  },
+  {
+   "id": "T04",
+   "group": "T",
+   "name": "Handwritten English recognition",
+   "priority": "H",
+   "collect": "30 answer-sheet photos",
+   "source": "P/OCR.html: \"handwriting, vertical text…\"",
+   "evidence": "V",
+   "position": 33
+  },
+  {
+   "id": "T05",
+   "group": "T",
+   "name": "Printed + handwritten on one page, tagged per line",
+   "priority": "H",
+   "collect": "15 marked answer sheets",
+   "source": "AZR: \"classifying whether each text line is of handwriting style\"; AWB",
+   "evidence": "S",
+   "position": 34
+  },
+  {
+   "id": "T06",
+   "group": "T",
+   "name": "Hindi / Devanagari",
+   "priority": "H if in scope",
+   "collect": "15 Hindi pages",
+   "source": "devanagari_PP-OCRv5_mobile_rec [S19]; PP-OCRv6 has no Devanagari [S11]",
+   "evidence": "V",
+   "position": 35
+  },
+  {
+   "id": "T07",
+   "group": "T",
+   "name": "Hindi–English code-mixed text",
+   "priority": "H if in scope",
+   "collect": "10 Hinglish pages",
+   "source": "AZR (mixed languages); no OCR-specific dataset found",
+   "evidence": "S",
+   "position": 36
+  },
+  {
+   "id": "T08",
+   "group": "T",
+   "name": "Script / language identification per line",
+   "priority": "L",
+   "collect": "uses T06/T07 inputs",
+   "source": "TQ (OSD); AZA",
+   "evidence": "V / S",
+   "position": 37
+  },
+  {
+   "id": "T09",
+   "group": "T",
+   "name": "Word-level boxes",
+   "priority": "M",
+   "collect": "—",
+   "source": "P/OCR.html `return_word_box`",
+   "evidence": "V",
+   "position": 38
+  },
+  {
+   "id": "T10",
+   "group": "T",
+   "name": "Confidence score per line/word/token",
+   "priority": "H",
+   "collect": "—",
+   "source": "P/OCR.html `rec_scores`; SU (per-token)",
+   "evidence": "V / S",
+   "position": 39
+  },
+  {
+   "id": "T11",
+   "group": "T",
+   "name": "Crossed-out / strikethrough text detected",
+   "priority": "H",
+   "collect": "15 answer sheets with crossings-out",
+   "source": "AWS \"Crossed Out Words\"; arXiv 2201.09633",
+   "evidence": "S",
+   "position": 40
+  },
+  {
+   "id": "T12",
+   "group": "T",
+   "name": "Underlined / circled text detected",
+   "priority": "M",
+   "collect": "5 pages",
+   "source": "AWS \"underlined, and circled text\"",
+   "evidence": "S",
+   "position": 41
+  },
+  {
+   "id": "T13",
+   "group": "T",
+   "name": "Checkbox / bubble (OMR) state",
+   "priority": "M",
+   "collect": "5 OMR sheets",
+   "source": "AZL; GDA",
+   "evidence": "S",
+   "position": 42
+  },
+  {
+   "id": "T14",
+   "group": "T",
+   "name": "Seal / stamp text",
+   "priority": "L",
+   "collect": "—",
+   "source": "P/seal_recognition.html",
+   "evidence": "V",
+   "position": 43
+  },
+  {
+   "id": "T15",
+   "group": "T",
+   "name": "Text spotting (detect + recognise jointly)",
+   "priority": "L",
+   "collect": "—",
+   "source": "PaddleOCR-VL-1.5 \"Spotting:\" prompt [S35]",
+   "evidence": "V",
+   "position": 44
+  },
+  {
+   "id": "T16",
+   "group": "T",
+   "name": "Font style / bold / handwriting attribute",
+   "priority": "L",
+   "collect": "—",
+   "source": "GDA",
+   "evidence": "S",
+   "position": 45
+  },
+  {
+   "id": "X01",
+   "group": "X",
+   "name": "Printed formula → LaTeX",
+   "priority": "H",
+   "collect": "20 module pages with equations",
+   "source": "P/formula_recognition.html [S12]",
+   "evidence": "V",
+   "position": 46
+  },
+  {
+   "id": "X02",
+   "group": "X",
+   "name": "Handwritten formula → LaTeX",
+   "priority": "H",
+   "collect": "30 handwritten maths/physics answers",
+   "source": "M/formula_recognition.html (UniMERNet); Uni-MuMER [S29]",
+   "evidence": "V / S",
+   "position": 47
+  },
+  {
+   "id": "X03",
+   "group": "X",
+   "name": "Inline vs display formula tagged",
+   "priority": "M",
+   "collect": "uses X01 inputs",
+   "source": "AZA: \"formula type as inline or display\"",
+   "evidence": "S",
+   "position": 48
+  },
+  {
+   "id": "X04",
+   "group": "X",
+   "name": "Chemical equation (reactions, mhchem)",
+   "priority": "H",
+   "collect": "15 printed + 15 handwritten",
+   "source": "none found",
+   "evidence": "U",
+   "position": 49
+  },
+  {
+   "id": "X05",
+   "group": "X",
+   "name": "Chemical structure → SMILES",
+   "priority": "H",
+   "collect": "15 printed + 15 hand-drawn",
+   "source": "DECIMER [S28]; Mathpix image-to-SMILES",
+   "evidence": "S",
+   "position": 50
+  },
+  {
+   "id": "X06",
+   "group": "X",
+   "name": "Table → HTML/Markdown (wired/wireless, merged cells)",
+   "priority": "M",
+   "collect": "10 tables",
+   "source": "P/table_recognition_v2.html; Textract tables",
+   "evidence": "V / S",
+   "position": 51
+  },
+  {
+   "id": "X07",
+   "group": "X",
+   "name": "Printed chart → data table",
+   "priority": "M",
+   "collect": "10 charts",
+   "source": "M/chart_parsing.html (off by default)",
+   "evidence": "V",
+   "position": 52
+  },
+  {
+   "id": "X08",
+   "group": "X",
+   "name": "Hand-drawn chart/graph → data",
+   "priority": "H",
+   "collect": "15 hand-drawn graphs",
+   "source": "ChartArena [S27]",
+   "evidence": "V",
+   "position": 53
+  },
+  {
+   "id": "X09",
+   "group": "X",
+   "name": "Figure/diagram detected and cropped",
+   "priority": "H",
+   "collect": "20 pages with diagrams",
+   "source": "DLP (\"categorize images by type\")",
+   "evidence": "S",
+   "position": 54
+  },
+  {
+   "id": "X10",
+   "group": "X",
+   "name": "Figure description / caption generation",
+   "priority": "M",
+   "collect": "uses X09 inputs",
+   "source": "DLE (\"annotate a picture with a vision model\")",
+   "evidence": "S",
+   "position": 55
+  },
+  {
+   "id": "X11",
+   "group": "X",
+   "name": "Labels inside diagrams read (e.g. ray diagram, circuit labels)",
+   "priority": "H",
+   "collect": "uses X09 inputs",
+   "source": "none found as a named stage",
+   "evidence": "U",
+   "position": 56
+  },
+  {
+   "id": "X12",
+   "group": "X",
+   "name": "Circuit diagram → components",
+   "priority": "M",
+   "collect": "10 hand-drawn circuits",
+   "source": "arXiv 2107.10373; [S60]",
+   "evidence": "S",
+   "position": 57
+  },
+  {
+   "id": "X13",
+   "group": "X",
+   "name": "Flowchart / diagram → structure",
+   "priority": "L",
+   "collect": "5 flowcharts",
+   "source": "arXiv 2501.17441, 2401.03742",
+   "evidence": "S",
+   "position": 58
+  },
+  {
+   "id": "O01",
+   "group": "O",
+   "name": "Structured output: Markdown / JSON / HTML / DOCX / LaTeX",
+   "priority": "H",
+   "collect": "—",
+   "source": "[S8]; Docling; MinerU",
+   "evidence": "V / S",
+   "position": 59
+  },
+  {
+   "id": "O02",
+   "group": "O",
+   "name": "Grounding: each output piece linked to its box",
+   "priority": "H",
+   "collect": "—",
+   "source": "P/PaddleOCR-VL.html `block_bbox`; dots.ocr",
+   "evidence": "S",
+   "position": 60
+  },
+  {
+   "id": "O03",
+   "group": "O",
+   "name": "Dictionary / LLM correction",
+   "priority": "L",
+   "collect": "—",
+   "source": "TQ; MK `--use_llm`",
+   "evidence": "V / S",
+   "position": 61
+  },
+  {
+   "id": "O04",
+   "group": "O",
+   "name": "Key-value / key-information extraction",
+   "priority": "L",
+   "collect": "—",
+   "source": "P/PP-ChatOCRv4.html (needs an LLM)",
+   "evidence": "V",
+   "position": 62
+  },
+  {
+   "id": "R01",
+   "group": "R",
+   "name": "Blank page → empty output",
+   "priority": "H",
+   "collect": "5 blank pages",
+   "source": "arXiv 2506.20168 (\"refusal to answer\")",
+   "evidence": "S",
+   "position": 63
+  },
+  {
+   "id": "R02",
+   "group": "R",
+   "name": "Photo with no text → no invented text",
+   "priority": "H",
+   "collect": "5 non-text photos",
+   "source": "same",
+   "evidence": "S",
+   "position": 64
+  },
+  {
+   "id": "R03",
+   "group": "R",
+   "name": "No repetition loops",
+   "priority": "H",
+   "collect": "all inputs (automatic check)",
+   "source": "arXiv 2510.19817",
+   "evidence": "S",
+   "position": 65
+  },
+  {
+   "id": "R04",
+   "group": "R",
+   "name": "Illegible handwriting → low confidence / marked unclear, not a guess",
+   "priority": "H",
+   "collect": "10 very messy samples",
+   "source": "arXiv 2506.20168",
+   "evidence": "S",
+   "position": 66
+  },
+  {
+   "id": "D01",
+   "group": "D",
+   "name": "Runs offline on Apple Silicon",
+   "priority": "H",
+   "collect": "",
+   "source": "[S6]; MU (MPS)",
+   "evidence": "V / S",
+   "position": 67
+  },
+  {
+   "id": "D02",
+   "group": "D",
+   "name": "Quantised build available",
+   "priority": "M",
+   "collect": "",
+   "source": "QW (FP8); PaddleOCR INT8 not found",
+   "evidence": "S",
+   "position": 68
+  },
+  {
+   "id": "D03",
+   "group": "D",
+   "name": "Fast backend (OpenVINO/ONNX/TensorRT/vLLM)",
+   "priority": "M",
+   "collect": "",
+   "source": "`inference_deployment/local_inference/high_performance_inference.html`",
+   "evidence": "V",
+   "position": 69
+  },
+  {
+   "id": "D04",
+   "group": "D",
+   "name": "Official fine-tuning recipe",
+   "priority": "H",
+   "collect": "",
+   "source": "P/OCR.html; [S21] [S22]; Qwen3-VL fine-tuning code not found",
+   "evidence": "V",
+   "position": 70
+  },
+  {
+   "id": "D05",
+   "group": "D",
+   "name": "Commercial license (code + weights)",
+   "priority": "H",
+   "collect": "",
+   "source": "[S2] [S14] [S30] [S31]",
+   "evidence": "V",
+   "position": 71
+  }
+ ]
+}

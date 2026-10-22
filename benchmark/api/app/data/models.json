@@ -1,0 +1,128 @@
+[
+  {
+    "id": "pp_ocrv6_m", "name": "PP-OCRv6 medium", "family": "paddle", "kind": "pipeline",
+    "platform": "M4 CPU", "params": null, "license": "Apache-2.0", "needs_prompt": false,
+    "summary": "PaddleOCR's general text pipeline: find text lines, then read each one.",
+    "covers": ["handwritten_text", "printed_text", "diagram_labels"],
+    "pipeline": [
+      {"id": "doc_ori", "name": "Page orientation (PP-LCNet_x1_0_doc_ori)", "default_on": true, "optional": true},
+      {"id": "unwarp", "name": "Unwarping (UVDoc)", "default_on": true, "optional": true},
+      {"id": "textline_ori", "name": "Text-line orientation", "default_on": true, "optional": true},
+      {"id": "det", "name": "Text detection (PP-OCRv6_medium_det)", "default_on": true, "optional": false},
+      {"id": "rec", "name": "Text recognition (PP-OCRv6_medium_rec)", "default_on": true, "optional": false}
+    ]
+  },
+  {
+    "id": "pp_ocrv5_server", "name": "PP-OCRv5 server", "family": "paddle", "kind": "pipeline",
+    "platform": "M4 CPU", "params": null, "license": "Apache-2.0", "needs_prompt": false,
+    "summary": "Previous PaddleOCR text pipeline, server-size models.",
+    "covers": ["handwritten_text", "printed_text", "diagram_labels"],
+    "pipeline": [
+      {"id": "doc_ori", "name": "Page orientation", "default_on": true, "optional": true},
+      {"id": "unwarp", "name": "Unwarping (UVDoc)", "default_on": true, "optional": true},
+      {"id": "textline_ori", "name": "Text-line orientation", "default_on": true, "optional": true},
+      {"id": "det", "name": "Text detection (PP-OCRv5_server_det)", "default_on": true, "optional": false},
+      {"id": "rec", "name": "Text recognition (PP-OCRv5_server_rec)", "default_on": true, "optional": false}
+    ]
+  },
+  {
+    "id": "pp_ocrv5_devanagari", "name": "PP-OCRv5 Devanagari", "family": "paddle", "kind": "pipeline",
+    "platform": "M4 CPU", "params": null, "license": "Apache-2.0", "needs_prompt": false,
+    "summary": "PP-OCRv5 with the Devanagari recogniser, for Hindi pages.",
+    "covers": ["hindi", "printed_text"],
+    "pipeline": [
+      {"id": "det", "name": "Text detection", "default_on": true, "optional": false},
+      {"id": "rec", "name": "Text recognition (devanagari_PP-OCRv5_mobile_rec)", "default_on": true, "optional": false}
+    ]
+  },
+  {
+    "id": "pp_structurev3", "name": "PP-StructureV3", "family": "paddle", "kind": "pipeline",
+    "platform": "M4 CPU", "params": null, "license": "Apache-2.0", "needs_prompt": false,
+    "summary": "Full document parser: layout, text, tables, formulas and reading order, as separate models.",
+    "covers": ["handwritten_text", "printed_text", "printed_formula", "handwritten_formula", "tables", "diagram_labels"],
+    "pipeline": [
+      {"id": "doc_pre", "name": "Orientation + unwarping", "default_on": false, "optional": true},
+      {"id": "layout", "name": "Layout detection (PP-DocLayout_plus-L)", "default_on": true, "optional": false},
+      {"id": "ocr", "name": "Text detection + recognition (PP-OCRv5_server)", "default_on": true, "optional": false},
+      {"id": "textline_ori", "name": "Text-line orientation", "default_on": false, "optional": true},
+      {"id": "table", "name": "Table recognition (SLANeXt)", "default_on": true, "optional": true},
+      {"id": "formula", "name": "Formula recognition (PP-FormulaNet_plus-L)", "default_on": true, "optional": true},
+      {"id": "seal", "name": "Seal recognition", "default_on": false, "optional": true},
+      {"id": "chart", "name": "Chart parsing (PP-Chart2Table)", "default_on": false, "optional": true},
+      {"id": "order", "name": "Reading order", "default_on": true, "optional": false}
+    ]
+  },
+  {
+    "id": "paddleocr_vl_1_6", "name": "PaddleOCR-VL 1.6", "family": "paddle", "kind": "vlm",
+    "platform": "M4 CPU", "params": "0.9B", "license": "Apache-2.0", "needs_prompt": false,
+    "summary": "Layout model finds each element, then a 0.9B vision-language model reads it.",
+    "covers": ["handwritten_text", "printed_text", "printed_formula", "handwritten_formula", "tables", "diagram_labels", "hindi"],
+    "pipeline": [
+      {"id": "doc_pre", "name": "Orientation + unwarping", "default_on": false, "optional": true},
+      {"id": "layout", "name": "Layout + reading order (PP-DocLayoutV3)", "default_on": true, "optional": false},
+      {"id": "vlm", "name": "Element recognition (0.9B VLM)", "default_on": true, "optional": false},
+      {"id": "merge", "name": "Merge in reading order", "default_on": true, "optional": false}
+    ]
+  },
+  {
+    "id": "paddleocr_vl_1_5", "name": "PaddleOCR-VL 1.5", "family": "paddle", "kind": "vlm",
+    "platform": "M4 CPU", "params": "0.9B", "license": "Apache-2.0", "needs_prompt": false,
+    "summary": "Previous PaddleOCR-VL release; same pipeline shape as 1.6.",
+    "covers": ["handwritten_text", "printed_text", "printed_formula", "handwritten_formula", "tables", "diagram_labels", "hindi"],
+    "pipeline": [
+      {"id": "doc_pre", "name": "Orientation + unwarping", "default_on": false, "optional": true},
+      {"id": "layout", "name": "Layout + reading order (PP-DocLayoutV3)", "default_on": true, "optional": false},
+      {"id": "vlm", "name": "Element recognition (0.9B VLM)", "default_on": true, "optional": false},
+      {"id": "merge", "name": "Merge in reading order", "default_on": true, "optional": false}
+    ]
+  },
+  {
+    "id": "pp_formulanet_plus_l", "name": "PP-FormulaNet plus-L", "family": "paddle", "kind": "specialist",
+    "platform": "M4 CPU", "params": null, "license": "Apache-2.0", "needs_prompt": false,
+    "summary": "PaddleOCR's formula pipeline: formula image in, LaTeX out.",
+    "covers": ["printed_formula", "handwritten_formula"],
+    "pipeline": [
+      {"id": "doc_pre", "name": "Orientation + unwarping", "default_on": false, "optional": true},
+      {"id": "layout", "name": "Layout detection", "default_on": false, "optional": true},
+      {"id": "formula", "name": "Formula recognition (PP-FormulaNet_plus-L)", "default_on": true, "optional": false}
+    ]
+  },
+  {
+    "id": "qwen3_vl_8b", "name": "Qwen3-VL 8B", "family": "challenger", "kind": "vlm",
+    "platform": "Colab T4", "params": "8B", "license": "unverified", "needs_prompt": true,
+    "summary": "General vision-language model, prompted with the neutral transcription prompt.",
+    "covers": ["handwritten_text", "printed_text", "printed_formula", "handwritten_formula", "tables", "diagram_labels", "hindi"],
+    "pipeline": [{"id": "vlm", "name": "Image + prompt to text (single model)", "default_on": true, "optional": false}]
+  },
+  {
+    "id": "glm_ocr", "name": "GLM-OCR", "family": "challenger", "kind": "vlm",
+    "platform": "Colab T4", "params": null, "license": "see S30", "needs_prompt": false,
+    "summary": "OCR-focused vision-language model used through its SDK.",
+    "covers": ["handwritten_text", "printed_text", "printed_formula", "handwritten_formula", "tables", "diagram_labels"],
+    "pipeline": [{"id": "vlm", "name": "Document recognition (SDK)", "default_on": true, "optional": false}]
+  },
+  {
+    "id": "uni_mumer", "name": "Uni-MuMER", "family": "challenger", "kind": "specialist",
+    "platform": "Colab T4", "params": null, "license": "pending legal check", "needs_prompt": true,
+    "summary": "Model tuned for handwritten mathematical expressions.",
+    "covers": ["handwritten_formula", "printed_formula"],
+    "pipeline": [{"id": "vlm", "name": "Formula image to LaTeX", "default_on": true, "optional": false}]
+  },
+  {
+    "id": "decimer", "name": "DECIMER (hand-drawn)", "family": "challenger", "kind": "specialist",
+    "platform": "Colab T4", "params": null, "license": "see S28", "needs_prompt": false,
+    "summary": "Reads a chemical structure drawing and writes SMILES.",
+    "covers": ["chemistry"],
+    "pipeline": [
+      {"id": "encoder", "name": "Image encoder (EfficientNetV2)", "default_on": true, "optional": false},
+      {"id": "decoder", "name": "Transformer decoder to SMILES", "default_on": true, "optional": false}
+    ]
+  },
+  {
+    "id": "niera_production", "name": "Niera production OCR", "family": "baseline", "kind": "api",
+    "platform": "Niera API", "params": null, "license": "in use", "needs_prompt": false,
+    "summary": "The OCR Niera uses today. Its outputs on the same files will be added later.",
+    "covers": ["handwritten_text", "printed_text", "printed_formula", "handwritten_formula", "tables", "diagram_labels", "hindi", "chemistry"],
+    "pipeline": [], "status": "pending"
+  }
+]

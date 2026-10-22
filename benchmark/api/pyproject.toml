@@ -1,0 +1,25 @@
+[project]
+name = "niera-bench-api"
+version = "0.1.0"
+description = "Read-only API for the Niera OCR benchmark dashboard"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi[standard]>=0.159.1",
+    "pillow>=13.0.0",
+    "psycopg[binary]>=3.3.6",
+    "pydantic>=2.14.1",
+    "sqlalchemy>=2",
+]
+
+[dependency-groups]
+dev = [
+    "httpx>=0.28.1",
+    "pytest>=9.1.1",
+]
+
+[tool.vercel]
+entrypoint = "app.main:app"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
