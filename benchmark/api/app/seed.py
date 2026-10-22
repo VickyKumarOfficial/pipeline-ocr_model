@@ -40,6 +40,11 @@ SKILL = {
                 "tables": 0.90, "diagram_labels": 0.76},
     "uni_mumer": {"handwritten_formula": 0.86, "printed_formula": 0.90},
     "decimer": {"chemistry": 0.75},
+    "pp_doclayoutv3": {},
+    "mineru_2_5_pro": {"handwritten_text": 0.70, "printed_text": 0.98, "printed_formula": 0.93, "handwritten_formula": 0.52,
+                       "tables": 0.88, "diagram_labels": 0.72},
+    "typhoon_ocr_1_5_2b": {"handwritten_text": 0.84, "printed_text": 0.96, "printed_formula": 0.84, "handwritten_formula": 0.58,
+                           "tables": 0.84, "diagram_labels": 0.74},
 }
 
 # Median seconds per sample and peak memory (MB) in the demo.
@@ -48,11 +53,13 @@ SPEED = {
     "pp_structurev3": (6.5, 5200), "paddleocr_vl_1_6": (14.0, 6100), "paddleocr_vl_1_5": (15.2, 6000),
     "pp_formulanet_plus_l": (2.2, 2600), "qwen3_vl_8b": (4.2, 9800), "glm_ocr": (1.8, 4300),
     "uni_mumer": (2.5, 7200), "decimer": (0.9, 2100),
+    "pp_doclayoutv3": (0.7, 1200), "mineru_2_5_pro": (2.4, 4800), "typhoon_ocr_1_5_2b": (3.1, 5600),
 }
 WEIGHTS_MB = {
     "pp_ocrv6_m": 180, "pp_ocrv5_server": 210, "pp_ocrv5_devanagari": 25, "pp_structurev3": 1300,
     "paddleocr_vl_1_6": 1900, "paddleocr_vl_1_5": 1900, "pp_formulanet_plus_l": 700, "qwen3_vl_8b": 16500,
     "glm_ocr": 2100, "uni_mumer": 7000, "decimer": 600,
+    "pp_doclayoutv3": 130, "mineru_2_5_pro": 2400, "typhoon_ocr_1_5_2b": 4300,
 }
 
 CONFUSE = {"l": "1", "1": "l", "O": "0", "0": "O", "e": "c", "a": "o", "m": "rn", "s": "5", "g": "q", "u": "v", "t": "f",
@@ -203,7 +210,7 @@ def seed_demo(session: Session) -> None:
                 ))
 
             rel = stage_relevance(model)
-            strength = sum(SKILL[model.id].values()) / len(SKILL[model.id])
+            strength = sum(SKILL[model.id].values()) / len(SKILL[model.id]) if SKILL[model.id] else 0.8
             crng = random.Random(f"{model.id}|checklist|{config if optional else 'same'}")
             for stage in stages:
                 claim = True if stage.id in rel else None

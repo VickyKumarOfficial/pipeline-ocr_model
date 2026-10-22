@@ -188,7 +188,9 @@ function BoardRow({ row, focus, other, href }: { row: LeaderboardRow; focus: str
         {row.rank != null ? (
           <ScoreCell value={row.focus_score} strong />
         ) : (
-          <span className="text-caption text-pencil">{row.focus_coverage} of 3 areas</span>
+          <span className="text-caption text-pencil">
+            {row.model.kind === "layout" ? "Layout only, see checklist" : `${row.focus_coverage} of 3 areas`}
+          </span>
         )}
       </TableCell>
       {focus.map((id) => (

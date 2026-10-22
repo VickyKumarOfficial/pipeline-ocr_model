@@ -117,6 +117,10 @@ Every factual statement in README.md and PIPELINE.md carries a tag like `[S7]`. 
 | S87 | Render free tier, https://render.com/docs/free | Spins down after 15 min idle, ~1 min to wake, "Do not use them for production applications" | 2026-10-22 | direct |
 | S88 | NVIDIA NIM VLM support matrix, https://docs.nvidia.com/nim/vision-language-models/1.3.2/support-matrix.html | bfloat16 needs compute capability 8.0; T4 is 7.5, so T4 runs use float16 | 2026-10-22 | agent |
 | S89 | uv CLI, `uv venv --help` (uv 0.11.28) | `--seed` is needed to install pip into a uv venv | 2026-10-22 | direct |
+| S90 | https://huggingface.co/PaddlePaddle/PP-DocLayoutV3 | Layout analysis model; multi-point boxes for non-planar pages; predicts reading order in one pass; part of PaddleOCR-VL-1.5; Apache-2.0; run with `paddleocr.LayoutDetection(model_name="PP-DocLayoutV3")`. Class list and size not on the card | 2026-10-22 | direct |
+| S91 | https://github.com/opendatalab/MinerU (README) and LICENSE.md | MinerU 4.0 (`mineru>=4.0,<5`); CPU works (ONNX + llama.cpp), Apple Silicon supported, `full` extra needs a Volta-or-newer NVIDIA GPU with 8 GB+. License: Apache-2.0 plus conditions: separate licence above 100M MAU or USD 20M monthly revenue; online services must state they use MinerU | 2026-10-22 | direct |
+| S92 | https://huggingface.co/opendatalab/MinerU2.5-Pro-2604-1.2B | 1.2B, Qwen2-VL architecture, Apache-2.0, Chinese and English; `mineru-vl-utils` `two_step_extract`; transformers or vLLM; no handwriting claim; formula CDM 97.29 (vendor) | 2026-10-22 | direct |
+| S93 | https://huggingface.co/scb10x/typhoon-ocr1.5-2b, arXiv:2601.14722 | Typhoon OCR 1.5: built on Qwen3-VL-2B, Apache-2.0, English and Thai; claims improved handwriting (no numbers); works only with its fixed prompt; trained at 1800 px; transformers, vLLM or Ollama; GGUF may lose accuracy | 2026-10-22 | direct |
 
 ## Local machine (measured, not a web source)
 
