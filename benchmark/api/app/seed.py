@@ -241,6 +241,20 @@ def ensure_demo_db() -> None:
             seed_demo(session)
 
 
+def refresh_static() -> None:
+    """Re-load models, stages and samples from app/data (after editing models.json). Results are untouched."""
+    Base.metadata.create_all(engine)
+    with Session(engine) as session:
+        load_static(session)
+        session.commit()
+
+
 if __name__ == "__main__":
-    ensure_demo_db()
-    print("demo database ready")
+    import sys
+
+    if "--refresh" in sys.argv:
+        refresh_static()
+        print("models, stages and samples refreshed")
+    else:
+        ensure_demo_db()
+        print("demo database ready")

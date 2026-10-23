@@ -198,6 +198,47 @@ def model_detail(model_id: str, run_id: str | None = None, session: Session = De
     )
 
 
+@app.get("/api/models/{model_id}/outputs", response_model=S.ModelOutputs)
+def model_outputs(model_id: str, run_id: str | None = None, config: str = Config, session: Session = Depends(get_session)):
+    run = pick_run(session, run_id)
+    m = session.get(Model, model_id)
+    if m is None:
+        raise HTTPException(404, f"Unknown model {model_id}")
+    samples = {s.id: s for s in session.scalars(select(Sample))}
+    preds = session.scalars(select(Prediction).where(
+        Prediction.run_id == run.id, Prediction.model_id == m.id, Prediction.config == config)).all()
+    items = [S.ModelSampleOutput(
+        sample=S.SampleOut.model_validate(samples[p.sample_id], from_attributes=True), output=p.output, score=p.score,
+        metrics=p.metrics, total_ms=p.total_ms, peak_mem_mb=p.peak_mem_mb, error=p.error, stages_run=p.stages_run,
+    ) for p in sorted(preds, key=lambda p: p.sample_id)]
+    return S.ModelOutputs(run=run_out(run), config=config, model=model_out(m), items=items)
+
+
+@app.get("/api/outputs", response_model=S.AllOutputs)
+def all_outputs(run_id: str | None = None, config: str = Config, category: str | None = None,
+                session: Session = Depends(get_session)):
+    run = pick_run(session, run_id)
+    q = select(Sample).order_by(Sample.id)
+    if category:
+        q = q.where(Sample.category == category)
+    samples = session.scalars(q).all()
+    ids = {s.id for s in samples}
+    preds = [p for p in session.scalars(select(Prediction).where(Prediction.run_id == run.id, Prediction.config == config))
+             if p.sample_id in ids]
+    by_sample: dict[str, dict[str, S.OutputBrief]] = defaultdict(dict)
+    model_scores: dict[str, list[float]] = defaultdict(list)
+    for p in preds:
+        by_sample[p.sample_id][p.model_id] = S.OutputBrief(output=p.output, score=p.score, total_ms=p.total_ms, error=p.error)
+        model_scores[p.model_id].append(p.score or 0.0)
+    models = {m.id: m for m in session.scalars(select(Model))}
+    order = sorted(model_scores, key=lambda mid: -mean(model_scores[mid]))
+    return S.AllOutputs(
+        run=run_out(run), config=config, models=[model_out(models[mid]) for mid in order],
+        samples=[S.SampleOutputs(sample=S.SampleOut.model_validate(s, from_attributes=True), outputs=by_sample.get(s.id, {}))
+                 for s in samples],
+    )
+
+
 @app.get("/api/samples", response_model=list[S.SampleListItem])
 def sample_list(run_id: str | None = None, config: str = Config, category: str | None = None,
                 session: Session = Depends(get_session)):

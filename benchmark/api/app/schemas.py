@@ -169,3 +169,40 @@ class SampleDetail(BaseModel):
     category_metric: str
     predictions: list[PredictionOut]
     not_run: list[ModelOut]  # models meant for this category with no output yet
+
+
+class ModelSampleOutput(BaseModel):
+    sample: SampleOut
+    output: str
+    score: float | None
+    metrics: dict
+    total_ms: float
+    peak_mem_mb: float
+    error: str | None
+    stages_run: list[str]
+
+
+class ModelOutputs(BaseModel):
+    run: RunOut
+    config: str
+    model: ModelOut
+    items: list[ModelSampleOutput]
+
+
+class OutputBrief(BaseModel):
+    output: str
+    score: float | None
+    total_ms: float
+    error: str | None
+
+
+class SampleOutputs(BaseModel):
+    sample: SampleOut
+    outputs: dict[str, OutputBrief]  # model id -> output
+
+
+class AllOutputs(BaseModel):
+    run: RunOut
+    config: str
+    models: list[ModelOut]  # columns, best mean score first
+    samples: list[SampleOutputs]

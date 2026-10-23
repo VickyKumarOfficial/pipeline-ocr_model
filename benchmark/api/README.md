@@ -14,6 +14,8 @@ uv run pytest
 | unset | Local SQLite file in the system temp folder, filled with **demo data** on first start |
 | `postgresql://…` (Neon) | Production. Tables are created by the publish step. Set `SEED_DEMO=1` to also load the demo run |
 
+After editing `app/data/models.json`, update the database's copy with `uv run --env-file .env python -m app.seed --refresh` (results are not touched).
+
 `CORS_ORIGINS` (comma-separated) lists the frontend origins allowed to call the API. Default: `http://localhost:3000`.
 
 ## Layout

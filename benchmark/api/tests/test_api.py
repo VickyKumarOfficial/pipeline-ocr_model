@@ -65,3 +65,16 @@ def test_model_detail():
     assert set(data["scores"]) == {"default", "full"}
     assert data["ablations"]
     assert client.get("/api/models/nope").status_code == 404
+
+
+def test_model_outputs_lists_every_prediction():
+    data = client.get("/api/models/pp_structurev3/outputs").json()
+    assert data["items"] and all(i["sample"]["id"] for i in data["items"])
+    assert client.get("/api/models/nope/outputs").status_code == 404
+
+
+def test_all_outputs_matrix():
+    data = client.get("/api/outputs?category=handwritten_text").json()
+    assert {s["sample"]["category"] for s in data["samples"]} == {"handwritten_text"}
+    col_ids = {m["id"] for m in data["models"]}
+    assert all(set(s["outputs"]) <= col_ids for s in data["samples"])

@@ -333,9 +333,9 @@
     "kind": "vlm",
     "platform": "Colab T4",
     "params": "8B",
-    "license": "unverified",
+    "license": "Apache-2.0",
     "needs_prompt": true,
-    "summary": "General vision-language model, prompted with the neutral transcription prompt.",
+    "summary": "General vision-language model, prompted with the neutral transcription prompt. Loaded in 4-bit on the T4 (about 18 GB in float16 does not fit).",
     "covers": [
       "handwritten_text",
       "printed_text",
@@ -361,7 +361,7 @@
     "kind": "vlm",
     "platform": "Colab T4",
     "params": null,
-    "license": "see S30",
+    "license": "MIT",
     "needs_prompt": false,
     "summary": "OCR-focused vision-language model used through its SDK.",
     "covers": [
@@ -411,7 +411,7 @@
     "kind": "specialist",
     "platform": "Colab T4",
     "params": null,
-    "license": "see S28",
+    "license": "MIT",
     "needs_prompt": false,
     "summary": "Reads a chemical structure drawing and writes SMILES.",
     "covers": [
