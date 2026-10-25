@@ -47,6 +47,27 @@ export function ScoreCell({ value, strong, naReason }: { value: number | null | 
   );
 }
 
+/** A label with a dotted underline; hovering or focusing it shows the explanation. */
+export function Tip({ label, tip, strong, muted, className }: { label: React.ReactNode; tip: React.ReactNode; strong?: boolean; muted?: boolean; className?: string }) {
+  return (
+    <Tooltip>
+      <TooltipTrigger asChild>
+        <span
+          tabIndex={0}
+          className={cn(
+            "cursor-help border-b border-dotted border-faint focus-visible:outline-2",
+            strong ? "font-semibold text-graphite" : muted ? "font-normal text-pencil" : "font-medium text-graphite",
+            className,
+          )}
+        >
+          {label}
+        </span>
+      </TooltipTrigger>
+      <TooltipContent className="max-w-72">{tip}</TooltipContent>
+    </Tooltip>
+  );
+}
+
 export function PlatformTag({ platform }: { platform: string }) {
   return (
     <span className="inline-flex items-center rounded-sm border border-rule px-1.5 text-caption text-pencil">{platform}</span>

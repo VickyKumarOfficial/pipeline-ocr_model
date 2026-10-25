@@ -75,7 +75,7 @@ export function ChecklistView() {
         <table className="w-full border-separate border-spacing-0 text-body">
           <thead>
             <tr>
-              <th scope="col" className="sticky left-0 z-10 w-14 border-r border-b border-margin-line border-b-rule bg-sheet px-2 text-left align-bottom text-caption font-normal text-pencil">
+              <th scope="col" className="sticky left-0 z-10 w-14 border-r border-b border-rule bg-sheet px-2 text-left align-bottom text-caption font-normal text-pencil">
                 Stage
               </th>
               <th scope="col" className="sticky left-14 z-10 min-w-64 border-b border-rule bg-sheet px-3 pb-2 text-left align-bottom text-caption font-normal text-pencil">
@@ -109,7 +109,7 @@ export function ChecklistView() {
                   .filter((s) => s.group === g)
                   .map((s) => (
                     <tr key={s.id} className="group">
-                      <th scope="row" className="sticky left-0 z-10 border-r border-b border-margin-line border-b-rule bg-sheet px-2 text-left align-top text-caption font-semibold text-ink tabular group-hover:bg-paper">
+                      <th scope="row" className="sticky left-0 z-10 border-r border-b border-rule bg-sheet px-2 text-left align-top text-caption font-semibold text-ink tabular group-hover:bg-paper">
                         <span className="block pt-2.5">{s.id}</span>
                       </th>
                       <td className="sticky left-14 z-10 border-b border-rule bg-sheet px-3 py-2 align-top group-hover:bg-paper">

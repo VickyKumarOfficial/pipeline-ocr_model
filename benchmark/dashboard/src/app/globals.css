@@ -5,17 +5,17 @@
 @custom-variant dark (&:is(.dark *));
 
 /*
-  Answer-sheet palette. Light only for now.
-  paper/sheet: the page and surfaces · graphite/pencil: text · rule: hairlines
-  ink: ballpoint blue, the one accent · redpen: errors, failures, corrections only
+  Minimal palette, light only.
+  paper/sheet: page and surfaces; muted: quiet panels; graphite/pencil/faint: text
+  rule: hairlines; ink: the one accent; redpen: errors and corrections only
 */
 :root {
-  --paper: #f7f9fb;
+  --paper: #ffffff;
   --sheet: #ffffff;
-  --graphite: #22262d;
+  --graphite: #1c2028;
   --pencil: #5b6170;
   --faint: #8a90a0;
-  --rule: #dce3ee;
+  --rule: #e4e9f0;
   --rule-strong: #c5d0e0;
   --ink: #1f3a8f;
   --ink-mark: #3456c8;
@@ -34,7 +34,7 @@
   --primary-foreground: #ffffff;
   --secondary: var(--ink-wash);
   --secondary-foreground: var(--ink);
-  --muted: #eef2f7;
+  --muted: #f4f6f9;
   --muted-foreground: var(--pencil);
   --accent: var(--ink-wash);
   --accent-foreground: var(--ink);

@@ -89,6 +89,40 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/models/{model_id}/outputs": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Model Outputs */
+        get: operations["model_outputs_api_models__model_id__outputs_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/outputs": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** All Outputs */
+        get: operations["all_outputs_api_outputs_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/samples": {
         parameters: {
             query?: never;
@@ -137,6 +171,16 @@ export interface components {
             score_off: number;
             /** Score On */
             score_on: number;
+        };
+        /** AllOutputs */
+        AllOutputs: {
+            run: components["schemas"]["RunOut"];
+            /** Config */
+            config: string;
+            /** Models */
+            models: components["schemas"]["ModelOut"][];
+            /** Samples */
+            samples: components["schemas"]["SampleOutputs"][];
         };
         /** CategoryOut */
         CategoryOut: {
@@ -278,6 +322,46 @@ export interface components {
             /** Status */
             status: string;
         };
+        /** ModelOutputs */
+        ModelOutputs: {
+            run: components["schemas"]["RunOut"];
+            /** Config */
+            config: string;
+            model: components["schemas"]["ModelOut"];
+            /** Items */
+            items: components["schemas"]["ModelSampleOutput"][];
+        };
+        /** ModelSampleOutput */
+        ModelSampleOutput: {
+            sample: components["schemas"]["SampleOut"];
+            /** Output */
+            output: string;
+            /** Score */
+            score: number | null;
+            /** Metrics */
+            metrics: {
+                [key: string]: unknown;
+            };
+            /** Total Ms */
+            total_ms: number;
+            /** Peak Mem Mb */
+            peak_mem_mb: number;
+            /** Error */
+            error: string | null;
+            /** Stages Run */
+            stages_run: string[];
+        };
+        /** OutputBrief */
+        OutputBrief: {
+            /** Output */
+            output: string;
+            /** Score */
+            score: number | null;
+            /** Total Ms */
+            total_ms: number;
+            /** Error */
+            error: string | null;
+        };
         /** Overview */
         Overview: {
             run: components["schemas"]["RunOut"];
@@ -411,6 +495,14 @@ export interface components {
             };
             /** Gt Kind */
             gt_kind: string;
+        };
+        /** SampleOutputs */
+        SampleOutputs: {
+            sample: components["schemas"]["SampleOut"];
+            /** Outputs */
+            outputs: {
+                [key: string]: components["schemas"]["OutputBrief"];
+            };
         };
         /** StageOut */
         StageOut: {
@@ -577,6 +669,73 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["ModelDetail"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    model_outputs_api_models__model_id__outputs_get: {
+        parameters: {
+            query?: {
+                run_id?: string | null;
+                config?: string;
+            };
+            header?: never;
+            path: {
+                model_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ModelOutputs"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    all_outputs_api_outputs_get: {
+        parameters: {
+            query?: {
+                run_id?: string | null;
+                config?: string;
+                category?: string | null;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["AllOutputs"];
                 };
             };
             /** @description Validation Error */

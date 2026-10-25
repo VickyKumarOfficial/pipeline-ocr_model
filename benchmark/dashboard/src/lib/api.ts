@@ -14,6 +14,11 @@ export type ModelDetail = Schemas["ModelDetail"];
 export type SampleListItem = Schemas["SampleListItem"];
 export type SampleDetail = Schemas["SampleDetail"];
 export type PredictionOut = Schemas["PredictionOut"];
+export type ModelOutputs = Schemas["ModelOutputs"];
+export type ModelSampleOutput = Schemas["ModelSampleOutput"];
+export type AllOutputs = Schemas["AllOutputs"];
+export type SampleOut = Schemas["SampleOut"];
+export type SampleOutputs = Schemas["SampleOutputs"];
 
 export const API_BASE = (process.env.NEXT_PUBLIC_API_URL ?? "").replace(/\/$/, "");
 

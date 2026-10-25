@@ -37,15 +37,16 @@ export function RedPenDiff({ reference, output, mode, className }: { reference: 
   );
 }
 
-export function RedPenLegend() {
+export function RedPenLegend({ inline }: { inline?: boolean }) {
+  const Tag = inline ? "span" : "p";
   return (
-    <p className="flex flex-wrap gap-x-6 gap-y-1 text-caption text-pencil">
+    <Tag className={cn("text-caption text-pencil", inline ? "inline-flex flex-wrap gap-x-4" : "flex flex-wrap gap-x-6 gap-y-1")}>
       <span>
-        <del className="font-mono text-redpen decoration-2">struck</del> = model wrote this, it is wrong
+        <del className="font-mono text-redpen decoration-2">struck</del> = wrong
       </span>
       <span>
-        <ins className="rounded-sm bg-redpen-wash px-0.5 font-mono text-redpen no-underline">added</ins> = model missed this
+        <ins className="rounded-sm bg-redpen-wash px-0.5 font-mono text-redpen no-underline">added</ins> = missed
       </span>
-    </p>
+    </Tag>
   );
 }

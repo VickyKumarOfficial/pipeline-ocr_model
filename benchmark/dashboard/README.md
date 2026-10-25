@@ -18,10 +18,11 @@ Open http://localhost:3000.
 
 | Path | Shows |
 |---|---|
-| `/` | Leaderboard. Rank = average of the three focus areas (handwriting, handwritten formulas, diagram labels) |
-| `/models?id=…` | One model: default vs all-stages scores, time per sample, pipeline with on/off effect of each optional stage |
+| `/` | Leaderboard. Rank = average of the three focus areas (handwriting, handwritten formulas, diagram labels). "All columns" adds the other categories |
+| `/models?id=…` | One model: everything collected (scores, times, memory, load, weights, license, input), pipeline with the on/off effect of each optional stage, checklist counts, and every final output marked against the ground truth |
+| `/outputs` | Every sample with all models' outputs side by side; filter by category, switch between corrections and exact output |
+| `/samples?id=…` | One sample in detail, with the line boxes a model found |
 | `/checklist` | STAGES.md grid: test result per model and stage, plus whether the docs claim it |
-| `/samples`, `/samples?id=…` | Inputs, and every model's output marked against the ground truth |
 | `/runs` | Provenance of each run |
 
 Run, config and filters live in the URL, so any view can be shared as a link.
@@ -43,4 +44,4 @@ Set `NEXT_PUBLIC_API_URL` to the API's address at build time. Leave it empty whe
 
 ## Design
 
-Answer-sheet palette: cool white paper, ballpoint-ink blue as the only accent, red pen only for failures and corrections. Ranks and stage IDs sit in a notebook margin left of a red rule. Font: Atkinson Hyperlegible, chosen because it keeps look-alike characters (l / I / 1, O / 0) distinct. Tokens are in `src/app/globals.css`.
+Minimal: white page, one blue accent, red only for failures and red-pen corrections. Labels with a dotted underline explain themselves on hover. Font: Atkinson Hyperlegible, chosen because it keeps look-alike characters (l / I / 1, O / 0) distinct. Tokens are in `src/app/globals.css`.

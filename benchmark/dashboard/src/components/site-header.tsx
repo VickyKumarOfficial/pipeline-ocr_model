@@ -10,10 +10,10 @@ import { useUrlState } from "@/lib/url-state";
 import { cn } from "@/lib/utils";
 
 const NAV = [
-  { href: "/", label: "Leaderboard" },
-  { href: "/checklist", label: "Capability checklist" },
-  { href: "/samples", label: "Samples" },
-  { href: "/runs", label: "Runs" },
+  { href: "/", label: "Leaderboard", match: (p: string) => p === "/" || p.startsWith("/models") },
+  { href: "/outputs", label: "Outputs", match: (p: string) => p.startsWith("/outputs") || p.startsWith("/samples") },
+  { href: "/checklist", label: "Checklist", match: (p: string) => p.startsWith("/checklist") },
+  { href: "/runs", label: "Runs", match: (p: string) => p.startsWith("/runs") },
 ];
 
 export function SiteHeader() {
@@ -24,70 +24,63 @@ export function SiteHeader() {
   const current = runs?.find((r) => r.id === run) ?? latest;
 
   return (
-    <header className="border-b border-rule bg-sheet">
-      <div className="mx-auto flex max-w-[1360px] flex-wrap items-center gap-x-8 gap-y-3 px-6 pt-4">
-        <Link href={href("/")} className="flex items-baseline gap-2 rounded-sm focus-visible:outline-2">
-          <span className="text-h3 font-semibold tracking-tight text-ink">Niera</span>
-          <span className="text-h3 text-graphite">OCR benchmark</span>
+    <header className="sticky top-0 z-30 border-b border-rule bg-sheet/95 backdrop-blur supports-[backdrop-filter]:bg-sheet/85">
+      <div className="mx-auto flex max-w-[1280px] flex-wrap items-center gap-x-8 gap-y-2 px-6 py-3">
+        <Link href={href("/")} className="rounded-sm text-h4 font-semibold text-graphite focus-visible:outline-2">
+          Niera <span className="font-normal text-pencil">OCR benchmark</span>
         </Link>
 
-        <div className="ml-auto flex flex-wrap items-center gap-3">
-          <label className="flex items-center gap-2 text-caption text-pencil">
-            Run
-            <Select value={current?.id ?? ""} onValueChange={(v) => set({ run: v === latest?.id ? null : v })}>
-              <SelectTrigger size="sm" className="min-w-56 bg-sheet text-body" aria-label="Run">
-                <SelectValue placeholder="Loading runs…" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectGroup>
-                  {runs?.map((r) => (
-                    <SelectItem key={r.id} value={r.id}>
-                      {r.is_demo ? "Demo data" : r.id} ({fmtDate(r.created_at)})
-                    </SelectItem>
-                  ))}
-                </SelectGroup>
-              </SelectContent>
-            </Select>
-          </label>
-          <div className="flex items-center gap-2 text-caption text-pencil">
-            <span id="config-label">Settings</span>
-            <ToggleGroup
-              type="single"
-              variant="outline"
-              size="sm"
-              value={config}
-              onValueChange={(v) => v && set({ config: v })}
-              aria-labelledby="config-label"
-            >
-              <ToggleGroupItem value="default" className="px-3 data-[state=on]:bg-ink-wash data-[state=on]:text-ink">
-                Library defaults
-              </ToggleGroupItem>
-              <ToggleGroupItem value="full" className="px-3 data-[state=on]:bg-ink-wash data-[state=on]:text-ink">
-                All stages on
-              </ToggleGroupItem>
-            </ToggleGroup>
-          </div>
+        <nav aria-label="Sections" className="-mx-2 flex gap-1 overflow-x-auto">
+          {NAV.map((item) => {
+            const active = item.match(pathname);
+            return (
+              <Link
+                key={item.href}
+                href={href(item.href)}
+                aria-current={active ? "page" : undefined}
+                className={cn(
+                  "shrink-0 rounded-md px-2.5 py-1.5 text-body text-pencil transition-colors hover:bg-muted hover:text-graphite focus-visible:outline-2",
+                  active && "bg-ink-wash font-semibold text-ink hover:bg-ink-wash hover:text-ink",
+                )}
+              >
+                {item.label}
+              </Link>
+            );
+          })}
+        </nav>
+
+        <div className="ml-auto flex flex-wrap items-center gap-2">
+          <Select value={current?.id ?? ""} onValueChange={(v) => set({ run: v === latest?.id ? null : v })}>
+            <SelectTrigger size="sm" className="min-w-52 bg-sheet text-body" aria-label="Run">
+              <SelectValue placeholder="Loading runs…" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectGroup>
+                {runs?.map((r) => (
+                  <SelectItem key={r.id} value={r.id}>
+                    {r.is_demo ? "Demo data" : r.id} ({fmtDate(r.created_at)})
+                  </SelectItem>
+                ))}
+              </SelectGroup>
+            </SelectContent>
+          </Select>
+          <ToggleGroup
+            type="single"
+            variant="outline"
+            size="sm"
+            value={config}
+            onValueChange={(v) => v && set({ config: v })}
+            aria-label="Pipeline settings"
+          >
+            <ToggleGroupItem value="default" className="px-3 data-[state=on]:bg-ink-wash data-[state=on]:text-ink">
+              Defaults
+            </ToggleGroupItem>
+            <ToggleGroupItem value="full" className="px-3 data-[state=on]:bg-ink-wash data-[state=on]:text-ink">
+              All stages on
+            </ToggleGroupItem>
+          </ToggleGroup>
         </div>
       </div>
-
-      <nav aria-label="Sections" className="mx-auto mt-3 flex max-w-[1360px] gap-1 overflow-x-auto px-4">
-        {NAV.map((item) => {
-          const active = item.href === "/" ? pathname === "/" || pathname.startsWith("/models") : pathname.startsWith(item.href);
-          return (
-            <Link
-              key={item.href}
-              href={href(item.href)}
-              aria-current={active ? "page" : undefined}
-              className={cn(
-                "relative shrink-0 rounded-t-sm px-3 pt-1 pb-2.5 text-body text-pencil transition-colors hover:text-graphite focus-visible:outline-2",
-                active && "font-semibold text-ink after:absolute after:inset-x-3 after:bottom-0 after:h-0.5 after:rounded-full after:bg-ink",
-              )}
-            >
-              {item.label}
-            </Link>
-          );
-        })}
-      </nav>
     </header>
   );
 }

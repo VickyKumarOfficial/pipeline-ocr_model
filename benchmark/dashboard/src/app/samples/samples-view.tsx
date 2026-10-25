@@ -1,89 +1,26 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 import { PlatformTag } from "@/components/marks";
 import { DemoNotice, LoadError, LoadingBlock, Page } from "@/components/page";
 import { RedPenDiff, RedPenLegend } from "@/components/red-pen-diff";
-import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Switch } from "@/components/ui/switch";
-import { apiUrl, mediaUrl, type Overview, type PredictionOut, type SampleDetail, type SampleListItem, useApi } from "@/lib/api";
+import { apiUrl, mediaUrl, type PredictionOut, type SampleDetail, useApi } from "@/lib/api";
 import { CATEGORY_SHORT, fmtMB, fmtMs, fmtScore } from "@/lib/format";
 import { useUrlState } from "@/lib/url-state";
 import { cn } from "@/lib/utils";
 
 export function SamplesView() {
-  const { params } = useUrlState();
+  const { params, href } = useUrlState();
+  const router = useRouter();
   const id = params.get("id");
-  return id ? <SampleDetailView id={id} /> : <SampleList />;
-}
-
-function SampleList() {
-  const { run, config, params, set, href } = useUrlState();
-  const category = params.get("category");
-  const { data, error, isLoading } = useApi<SampleListItem[]>(apiUrl("/api/samples", { run_id: run, config, category }));
-  const { data: overview } = useApi<Overview>(apiUrl("/api/overview", { run_id: run, config }));
-  const cats = overview?.categories.filter((c) => c.sample_count > 0) ?? [];
-
-  return (
-    <Page
-      title="Samples"
-      lead="Every input in the run. Open one to see each model's output marked against the ground truth."
-      aside={
-        <label className="flex items-center gap-2 text-caption text-pencil">
-          Category
-          <Select value={category ?? "all"} onValueChange={(v) => set({ category: v === "all" ? null : v })}>
-            <SelectTrigger size="sm" className="min-w-48 bg-sheet text-body" aria-label="Category">
-              <SelectValue />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectGroup>
-                <SelectItem value="all">All categories</SelectItem>
-                {cats.map((c) => (
-                  <SelectItem key={c.id} value={c.id}>
-                    {c.label} ({c.sample_count})
-                  </SelectItem>
-                ))}
-              </SelectGroup>
-            </SelectContent>
-          </Select>
-        </label>
-      }
-    >
-      <DemoNotice run={overview?.run} />
-      {error ? (
-        <LoadError error={error} />
-      ) : isLoading || !data ? (
-        <LoadingBlock />
-      ) : (
-        <ul className="grid grid-cols-1 gap-x-5 gap-y-7 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          {data.map(({ sample, best_score, worst_score }) => (
-            <li key={sample.id}>
-              <Link href={href("/samples", { id: sample.id })} className="group flex flex-col gap-2.5 rounded-md focus-visible:outline-2 focus-visible:outline-offset-4">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={mediaUrl(sample.image_url)}
-                  alt={`Sample ${sample.id}`}
-                  width={sample.width}
-                  height={sample.height}
-                  loading="lazy"
-                  className="aspect-[3/2] w-full rounded-md border border-rule bg-sheet object-cover transition-opacity group-hover:opacity-85"
-                />
-                <div className="flex items-baseline justify-between gap-3">
-                  <span className="truncate font-semibold text-graphite group-hover:text-ink">{sample.id}</span>
-                  <span className="shrink-0 text-caption text-pencil">{CATEGORY_SHORT[sample.category] ?? sample.category}</span>
-                </div>
-                <div className="flex gap-4 text-caption text-pencil tabular">
-                  <span>best <span className="font-semibold text-graphite">{fmtScore(best_score)}</span></span>
-                  <span>worst <span className={cn("font-semibold", worst_score != null && worst_score < 60 ? "text-redpen" : "text-graphite")}>{fmtScore(worst_score)}</span></span>
-                </div>
-              </Link>
-            </li>
-          ))}
-        </ul>
-      )}
-    </Page>
-  );
+  // The sample list moved to /outputs; keep old links working.
+  useEffect(() => {
+    if (!id) router.replace(href("/outputs"));
+  }, [id, router, href]);
+  return id ? <SampleDetailView id={id} /> : null;
 }
 
 function SampleDetailView({ id }: { id: string }) {
@@ -106,8 +43,8 @@ function SampleDetailView({ id }: { id: string }) {
       title={s.id}
       lead={`${CATEGORY_SHORT[s.category] ?? s.category}. Scored by ${data.category_metric.charAt(0).toLowerCase()}${data.category_metric.slice(1)}.`}
       aside={
-        <Link href={href("/samples")} className="text-body text-ink underline-offset-4 hover:underline">
-          All samples
+        <Link href={href("/outputs")} className="text-body text-ink underline-offset-4 hover:underline">
+          All outputs
         </Link>
       }
     >
